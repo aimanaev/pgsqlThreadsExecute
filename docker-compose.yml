@@ -1,0 +1,11 @@
+services:
+  sqlexecute:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: sqlexecute
+    env_file:
+      - ./app/.env
+    volumes:
+      - ./app/config:/app/config
+      - ./app/logs:/app/logs
