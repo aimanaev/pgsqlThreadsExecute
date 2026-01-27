@@ -7,4 +7,4 @@ scripts:
       type: command
 
     "Последние пять дней":
-      sql: SELECT zr_audit.fn_stat_increment(5::numeric)
+      sql: SELECT 1 as VALUE
