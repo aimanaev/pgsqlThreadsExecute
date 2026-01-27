@@ -1,0 +1,10 @@
+scripts:
+
+    "Проверка подключения":
+      sql: |
+        SELECT 1 
+        as VALUE
+      type: command
+
+    "Последние пять дней":
+      sql: SELECT 1 as VALUE
