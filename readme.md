@@ -1,11 +1,10 @@
-
-
-# Запуск sql-скриптов в потоке.
+# Запуск sql-скриптов в потоке
 
 ## Подготовка
 
 ### Требуется подготовить .env файл по примеру ./app/example.env
-```
+
+``` environment
 # ./app/.env
 
 # Database PostgreSQL
@@ -26,7 +25,8 @@ LOG_FILE=/app/logs/sqlexecute.log
 ```
 
 ### Требуется подготовить файл со скриптами по прмиеру ./app/config/example.scripts.yml
-```
+
+``` ansible
 # scripts.yml
 
 scripts:
@@ -44,14 +44,16 @@ scripts:
 ## Запуск выполнения скриптов
 
 ### Запуск
-```
+
+``` command
 docker compose up -d
 
 docker-compose up -d
 ```
 
 ### Просмотр исполнения посредством просмотра логов docker compose
-```
+
+``` command
 docker compose logs -f
 ```
 

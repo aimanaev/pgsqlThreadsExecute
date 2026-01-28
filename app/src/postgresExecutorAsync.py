@@ -163,7 +163,7 @@ class PostgresExecutorAsync:
                 is_select = sql.strip().upper().startswith('SELECT')
                 is_with = sql.strip().upper().startswith('WITH')
                 
-                if is_select or (is_with and 'SELECT' in sql_upper):
+                if is_select or (is_with and 'SELECT' in sql.strip().upper()):
                     # Для запросов, возвращающих данные
                     if params:
                         rows = await connection.fetch(sql, *params)
