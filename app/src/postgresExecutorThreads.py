@@ -7,16 +7,16 @@ from src.logger import logger
 from src.databaseSettings import settings
 from src.parseScripts import scripts
 
-class PostgresExecutor:
+class PostgresExecutorThreads:
     """Класс для параллельного выполнения SQL в PostgreSQL"""
     def __init__(self, 
-                 host: str, 
-                 port: int, 
-                 database: str, 
-                 user: str, 
-                 password: str,
-                 min_connections: int = 1,
-                 max_connections: int = 20):
+                 host: str = settings.DATABASE_HOST, 
+                 port: int = settings.DATABASE_PORT, 
+                 database: str = settings.DATABASE_DB, 
+                 user: str = settings.DATABASE_USER, 
+                 password: str = settings.DATABASE_PASSWORD,
+                 min_connections: int = settings.DATABASE_CONNECTIONS_MIN,
+                 max_connections: int = settings.DATABASE_CONNECTIONS_MAX):
         """
         Инициализация подключения к PostgreSQL
         Args:
@@ -164,7 +164,7 @@ class PostgresExecutor:
             self.connection_pool.closeall()
             logger.info("Пул соединений закрыт")
 
-class PostgresRun:
+class PostgresRunThreads:
 
     @staticmethod
     def info():
@@ -202,7 +202,7 @@ class PostgresRun:
             logger.info("Начало параллельного выполнения SQL-скриптов")
             logger.info("=" * 50)
             
-            executor = PostgresExecutor(**settings.DATABASE_PARAMS)
+            executor = PostgresExecutorThreads(**settings.DATABASE_PARAMS)
             
             # Выполняем SQL в трех потоках
             results = executor.execute_in_threads(scripts.scripts)

@@ -9,6 +9,11 @@ class DatabaseSettings(BaseSettings):
 
     DATABASE_CONNECTIONS_MIN: int = 1
     DATABASE_CONNECTIONS_MAX: int = 10
+    
+    DATABASE_CONNECTION_TIMEOUT: int = 60
+    DATABASE_COMMAND_TIMEOUT: int = 300
+
+    ASYNC_CONCURRENT_MAX: int = 5
 
     class Config:
         env_file = ".env"
